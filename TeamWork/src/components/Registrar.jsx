@@ -2,9 +2,14 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-nativ
 import React from 'react';
 
 
-const Login = () => {
+const Registrar = () => {
     return (
         <View style = {style.cuadro}>
+            <Text style = {style.letras}>
+                NICKNAME:
+            </Text>
+            <TextInput style = {style.inpunt}>
+            </TextInput>
             <Text style = {style.letras}>
                 CORREO:
             </Text>
@@ -23,7 +28,7 @@ const Login = () => {
         </View>
     )
 }
-export default Login
+export default Registrar
 
 const style = StyleSheet.create( {
 
@@ -35,9 +40,6 @@ const style = StyleSheet.create( {
         borderBottomStartRadius: 20, 
     },
     letras:{
-        fontFamily: "inter",
-        fontWeight: "bold",
-        fontStyle: "italic",
         marginBottom: 2,
         marginTop: 20,
         marginLeft: 20,
