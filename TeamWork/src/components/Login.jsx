@@ -1,21 +1,36 @@
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
+import { initializeApp } from "@firebase/app";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import firebaseConfig from "../../firebase"
 
+const Login = () => {   
+    const [Correo, setCorreo] = useState("")
+    const [Contrasena, setContrasena] = useState("")
 
-const Login = () => {
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const lognInUsuario = () => {
+        signInWithEmailAndPassword(auth, Correo, Contrasena).then(()=> {alert("el usuario existe")})
+        .catch((error) => {
+            alert(error.message)
+        })
+    }
     return (
         <View style = {style.cuadro}>
             <Text style = {style.letras}>
                 CORREO:
             </Text>
-            <TextInput style = {style.inpunt}>
+            <TextInput style = {style.inpunt}
+            onChangeText = {(correo)=> setCorreo(correo)}>
             </TextInput>
             <Text style = {style.letras}>
                 CONTRASEÑA:
             </Text>
-            <TextInput secureTextEntry = {true} style = {style.inpunt}>
+            <TextInput secureTextEntry = {true} style = {style.inpunt}
+            onChangeText = {(contrasena)=> setContrasena(contrasena)}>
             </TextInput>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => {lognInUsuario()}}>
                 <Text style = {[style.letras, style.send]}>
                     ENTRAR
                 </Text>

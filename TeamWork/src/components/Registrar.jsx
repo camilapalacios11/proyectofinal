@@ -2,8 +2,7 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-nativ
 import React, {useState} from 'react';
 import { initializeApp } from "@firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-//import firebaseConfig from "../../firebase"
-//import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import firebaseConfig from "../../firebase"
 
 
 const Registrar = () => {
@@ -11,9 +10,13 @@ const Registrar = () => {
     const [Correo, setCorreo] = useState("")
     const [Contrasena, setContrasena] = useState("")
 
-    //const app = initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
     const agregarUsuario = () => {
-        
+        createUserWithEmailAndPassword(auth, Correo, Contrasena).then(()=> {alert("registro de usuario")})
+        .catch((error) => {
+            alert(error.message)
+        })
     }
     return (
         <View style = {style.cuadro}>
@@ -35,7 +38,7 @@ const Registrar = () => {
             <TextInput secureTextEntry = {true} style = {style.inpunt}
              onChangeText= {(contrasena)=> setContrasena(contrasena)}>
             </TextInput>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => {agregarUsuario()}}>
                 <Text style = {[style.letras, style.send]}>
                     ENTRAR
                 </Text>
