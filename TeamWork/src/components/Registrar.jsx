@@ -1,6 +1,7 @@
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import React, {useState} from 'react';
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "@firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 //import firebaseConfig from "../../firebase"
 //import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 
