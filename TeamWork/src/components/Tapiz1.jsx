@@ -2,6 +2,7 @@ import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react
 import React, {useState} from 'react';
 import image from '../images/tapiz1.png'
 import Login from './Login'
+import Registrar from "./Registrar"
 
 const Tapiz1 = () => {
     const [botonActivo, setBoton] = useState(1)
@@ -22,7 +23,9 @@ const Tapiz1 = () => {
                </View>
                {
                 (botonActivo == 1)?
-                <Text>jeje</Text>
+                <Text>
+                    <Registrar/>
+                </Text>
                 :
                 <Login></Login>
                }
@@ -39,6 +42,7 @@ const style = StyleSheet.create( {
     contenedor: {
         width: 305,
         flexDirection: "row",
+        marginTop: 50,
     },
     papel: {
         flex: 1, 
@@ -47,7 +51,7 @@ const style = StyleSheet.create( {
         justifyContent: 'center'
     },
     tabs_noacti: {
-        backgroundColor: "rgba(2, 38, 73, 0.7)",
+        backgroundColor: "rgba(2, 38, 73, 0.5)",
     },
     tabs: {
         backgroundColor: "#022649",

@@ -1,24 +1,38 @@
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
+import { initializeApp } from "firebase/app";
+//import firebaseConfig from "../../firebase"
+//import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 
 
 const Registrar = () => {
+    const [NickName, setNickName] = useState("")   
+    const [Correo, setCorreo] = useState("")
+    const [Contrasena, setContrasena] = useState("")
+
+    //const app = initializeApp(firebaseConfig);
+    const agregarUsuario = () => {
+        
+    }
     return (
         <View style = {style.cuadro}>
             <Text style = {style.letras}>
                 NICKNAME:
             </Text>
-            <TextInput style = {style.inpunt}>
+            <TextInput style = {style.inpunt}
+            onChangeText= {(nick)=> setNickName(nick)}>
             </TextInput>
             <Text style = {style.letras}>
                 CORREO:
             </Text>
-            <TextInput style = {style.inpunt}>
+            <TextInput style = {style.inpunt}
+             onChangeText= {(correo)=> setCorreo(correo)}>
             </TextInput>
             <Text style = {style.letras}>
                 CONTRASEÑA:
             </Text>
-            <TextInput secureTextEntry = {true} style = {style.inpunt}>
+            <TextInput secureTextEntry = {true} style = {style.inpunt}
+             onChangeText= {(contrasena)=> setContrasena(contrasena)}>
             </TextInput>
             <TouchableOpacity>
                 <Text style = {[style.letras, style.send]}>
@@ -35,7 +49,7 @@ const style = StyleSheet.create( {
     cuadro: {
         backgroundColor: "#022649",
         width: 305,
-        height: 200,
+        height: 260,
         borderBottomEndRadius: 20,
         borderBottomStartRadius: 20, 
     },
@@ -63,7 +77,7 @@ const style = StyleSheet.create( {
         height: 40,
         textAlign: "center",
         paddingTop: 10,
-        marginTop: 55,
+        marginTop: 35,
         marginLeft: 100,
     }
 })

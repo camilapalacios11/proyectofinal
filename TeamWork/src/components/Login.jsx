@@ -35,9 +35,6 @@ const style = StyleSheet.create( {
         borderBottomStartRadius: 20, 
     },
     letras:{
-        fontFamily: "inter",
-        fontWeight: "bold",
-        fontStyle: "italic",
         marginBottom: 2,
         marginTop: 20,
         marginLeft: 20,
