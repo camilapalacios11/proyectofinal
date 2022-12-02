@@ -2,14 +2,23 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Tapiz1 from "./src/components/Tapiz1"
 
+//NAVEGADOR 
+import Navigation from './Navigation';
 
 export default function App() {
   
   return (
-    <Tapiz1/>
+    //<Tapiz1/>
+    <Navigation/>
+
   );
 }
 
+
+
+
+
+/*
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -17,4 +26,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+}); */
+
+
