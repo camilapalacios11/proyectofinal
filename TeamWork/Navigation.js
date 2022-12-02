@@ -14,7 +14,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 
 
-const tab = createBottonTabNavigator();
+const Tab = createBottomTabNavigator();
 
 function MyTabs() {
     return(
@@ -40,7 +40,7 @@ function MyTabs() {
 
             <Tab.Screens 
             name = "scrum" 
-            component= {srumScreen} 
+            component= {scrumScreen} 
             options = {{
                 tabBarLabel: "scrum",
                 tabBarIcon: ({color, size}) => (
