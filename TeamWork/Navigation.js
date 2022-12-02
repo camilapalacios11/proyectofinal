@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, createBottonTabNavigator } from "@react-navigation/botton-tabs";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 
 //pantallas
@@ -62,7 +62,7 @@ export default function Navigation() {
     )
     
 }
-
+/*
 const homeScreen = () => {
     return(
         <View>
@@ -75,4 +75,4 @@ const homeScreen = () => {
         </View>
     )
 }
-export default homeScreen;
+export default homeScreen;*/
