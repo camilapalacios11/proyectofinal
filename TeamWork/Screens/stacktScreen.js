@@ -12,5 +12,6 @@ const stackScreen = () => {
             }}>STACK SCREEN</Text>
         </View>
     )
+    
 }
 export default stackScreen;

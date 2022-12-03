@@ -1,6 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import { AntDesign } from '@expo/vector-icons';
 
 //pantallas
 import homeScreen from "./Screens/homeScreen";
@@ -10,7 +11,7 @@ import stackScreen from "./Screens/stacktScreen";
 //import { TabBarIOSItem } from "react-native";
 
 //icons
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 
@@ -29,12 +30,12 @@ function MyTabs() {
             name = "home" 
             component= {homeScreen}  
             options = {{
-                tabBarLabel: "hogar",
+                tabBarLabel: "Hogar",
                 tabBarIcon: ({color, size}) => (
-                    <MaterialCommunityIcons name="hogar" color ={color} size ={30} />
+                    <MaterialCommunityIcons name="home" color ={color} size ={30} />
                     ),
                 //tabBarBadge:
-                headerShouwn: false,
+                headerShown: false,
             }} 
             />
 
@@ -44,10 +45,10 @@ function MyTabs() {
             options = {{
                 tabBarLabel: "scrum",
                 tabBarIcon: ({color, size}) => (
-                    <MaterialCommunityIcons name="///////" color ={color} size ={30} />
+                    <MaterialCommunityIcons name="layers-outline" color ={color} size ={30} />
                     ),
                 //tabBarBadge:
-                headerShouwn: false,
+                headerShown: false,
             }} 
             />
         </Tab.Navigator>
