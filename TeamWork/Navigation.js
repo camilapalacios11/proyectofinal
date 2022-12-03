@@ -25,7 +25,7 @@ function MyTabs() {
         }} 
         >
 
-            <Tab.Screens 
+            <Tab.Screen 
             name = "home" 
             component= {homeScreen}  
             options = {{
@@ -38,7 +38,7 @@ function MyTabs() {
             }} 
             />
 
-            <Tab.Screens 
+            <Tab.Screen
             name = "scrum" 
             component= {scrumScreen} 
             options = {{
