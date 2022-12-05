@@ -71,9 +71,9 @@ const Tapiz2 = () => {
 
                {
                 (botonActivo == 1)?
-                <View> 
+                <ScrollView style={style.scroll}>     
                     <Tarjeta imagen = { require ("../images/tarjeta1.png")} tarea = "hacer las tarjetas" />
-                </View>
+                </ScrollView>
                 :
                 <Text>
                     todo2
@@ -112,7 +112,11 @@ const style = StyleSheet.create( {
     },
     scroll: {
         backgroundColor: "pink",
-        height: 100,
-        width: 100,
+        position: "absolute",
+        height: 400,
+        width: 1000,
+        marginLeft: 100,
+        marginTop: 100
+
     },
 })
