@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
-import Tapiz1 from "./src/components/Tapiz1"
-import Todo from "./src/components/Todo"
+import Tapiz2 from "./src/components/Tapiz2"
+
 
 //NAVEGADOR 
 import Navigation from './Navigation';
@@ -16,22 +16,8 @@ export default function App() {
   return (
     //<Tapiz1/>
     <View>
-      <View 
-      style = {{
-        backgroundColor: "rgba(247, 242, 201, 0.1)",
-        height: alto /5,
-        width: 100,
-      }}>
-        <Text>
-          REPERTORIO
-        </Text>
-      </View>
-
-        <Todo/>
-
+      <Tapiz2/>
     </View>
-    
-
   );
 }
 
