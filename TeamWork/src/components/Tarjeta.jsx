@@ -6,6 +6,7 @@ const ancho = Dimensions.get ('window').width
 //etiqueta atarjeta
 
 
+
 const Tarjeta = (props) => {
     return(
         <ImageBackground 
