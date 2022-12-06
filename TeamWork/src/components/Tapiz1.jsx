@@ -5,7 +5,7 @@ import Login from './Login'
 import Registrar from "./Registrar"
 
 const Tapiz1 = () => {
-    const [botonActivo, setBoton] = useState(1)
+    const [botonActivo, setBoton] = useState(1) 
 
     return (
         <View style={style.viewcont}>

@@ -2,11 +2,13 @@ import { View, Text, StyleSheet, TouchableOpacity, Dimensions, ScrollView } from
 import React, {useState} from 'react';
 import { FloatingAction } from "react-native-floating-action";
 
-import Tarjeta from './Tarjeta';
+import Todo from './Todo';
+import Proceso from './Proceso';
+import Prueba from './Prueba';
+import Hecho from './Hecho';
 
 //import Login from './Login'
 //import Registrar from "./Registrar"
-
 
 const alto = Dimensions.get ('window').height
 const ancho = Dimensions.get ('window').width
@@ -18,7 +20,7 @@ const Tapiz2 = () => {
     return (
 
         <View style={style.viewcont}>
-        
+            
             <View 
             style = {{
                 backgroundColor: "rgba(2, 38, 73, 0.22)",
@@ -69,16 +71,20 @@ const Tapiz2 = () => {
                     </TouchableOpacity>    
                </View>
 
-               {
-                (botonActivo == 1)?
-                <ScrollView style={style.scroll}>     
-                    <Tarjeta imagen = { require ("../images/tarjeta1.png")} tarea = "hacer las tarjetas" />
-                </ScrollView>
-                :
-                <Text>
-                    todo2
-                </Text>
-               }
+               
+                if (botonActivo == 1){
+                <Todo/>
+                }
+                else if(botonActivo == 2){
+                <Proceso/>
+                }
+                else if(botonActivo == 3){
+                <Prueba/>
+                }
+                else if(botonActivo == 4){
+                <Hecho/>
+                }
+               
         </View>
     )
 }
@@ -99,7 +105,7 @@ const style = StyleSheet.create( {
     },
     tabs: {
         backgroundColor: "#FFFFFF",
-        width: 80,
+        width: 70,
         height:  105,
         marginBottom: 50,
         transform: [{ rotate: '-90deg'}]
@@ -111,12 +117,11 @@ const style = StyleSheet.create( {
         transform: [{ rotate: '-90deg'}]
     },
     scroll: {
-        backgroundColor: "pink",
-        position: "absolute",
-        height: 400,
+        backgroundColor: "white",
+        height: 1000,
         width: 1000,
+        position: "absolute",
         marginLeft: 100,
-        marginTop: 100
-
+        marginTop: 170 ,
     },
 })
