@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, ScrollView, Modal} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, ScrollView, Modal, Image} from 'react-native';
 
 import Tarjeta from './Tarjeta';
 import close from '../images/X.png'
@@ -14,7 +14,7 @@ const Todo = () => {
         <View>
 
         <ScrollView style = {style.scroll}> 
-        <Tarjeta imagen = { require ("../images/tarjeta3.png")} tarea = "hacer las tarjetas"
+        <Tarjeta imagen = { require ("../images/tarjeta3.png")} tarea = "Aqui va el todo"
         action = {() => {setView(true)}}
         />
         </ScrollView>

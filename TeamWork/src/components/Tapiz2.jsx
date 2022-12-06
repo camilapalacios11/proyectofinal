@@ -71,20 +71,17 @@ const Tapiz2 = () => {
                     </TouchableOpacity>    
                </View>
 
-               
-                if (botonActivo == 1){
-                <Todo/>
-                }
-                else if(botonActivo == 2){
-                <Proceso/>
-                }
-                else if(botonActivo == 3){
-                <Prueba/>
-                }
-                else if(botonActivo == 4){
+            {   
+                (botonActivo == 1)? 
+                <Todo/>:
+                    (botonActivo == 2)? 
+                    <Proceso/>:
+                    (botonActivo == 3)?
+                    <Prueba/>
+                    :
                 <Hecho/>
-                }
-               
+                
+            }   
         </View>
     )
 }
