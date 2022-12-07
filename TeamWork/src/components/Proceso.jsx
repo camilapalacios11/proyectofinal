@@ -8,7 +8,7 @@ const ancho = Dimensions.get ('window').width
 const Proceso = () => {
     return (
         <ScrollView style = {style.scroll}> 
-        <Tarjeta imagen = { require ("../images/tarjeta3.png")} tarea = "Aqui va el hecho" />
+        <Tarjeta imagen = { require ("../images/tarjeta2.png")} tarea = "Aqui va el hecho" />
         </ScrollView>
     )
 }

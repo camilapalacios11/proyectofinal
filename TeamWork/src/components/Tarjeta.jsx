@@ -1,18 +1,14 @@
-import { TextInput, ImageBackground, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import {  ImageBackground, Text, StyleSheet } from 'react-native';
 
-const alto = Dimensions.get ('window').height
-const ancho = Dimensions.get ('window').width
 
 //etiqueta atarjeta
-
-
 
 const Tarjeta = (props) => {
     return(
         <ImageBackground 
         source = {props.imagen} resizeMode = 'cover' style = {style.tarjeta}
         >
-            <TextInput> {props.tarea} </TextInput>
+            <Text> {props.tarea} </Text>
         </ImageBackground>
 
         )
