@@ -18,9 +18,7 @@ export default function App() {
   return (
     //<Tapiz1/>
     
-    <View>
-      <Add></Add>
-    </View>
+      <Add/>
   );
 }
 
