@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Button,  ScrollView, Modal, Image, TextInput, Platform} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Button, Modal, Image, TextInput} from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import Tarjeta from './Tarjeta';
 import close from '../images/X.png'
@@ -7,7 +7,11 @@ import close from '../images/X.png'
 const alto = Dimensions.get ('window').height
 const ancho = Dimensions.get ('window').width
 
-const Modal = () => {
+const ModalInput = (props) => {
+    const [view, setView] = useState(props.view);
+    
+    const [date, setDate] = useState(new Date())
+    const [open, setOpen] = useState(false)
     return(
         <Modal animationType='fade' 
         onDismiss={ () => console.log("close") }
@@ -65,7 +69,7 @@ const Modal = () => {
                     <Button title="FECHA" onPress={() => setOpen(true)} />
                         <DatePicker
                             modal
-                            open={FECHA}
+                            open={open}
                             date={date}
                             onConfirm={(date) => {
                             setOpen(false)
@@ -84,7 +88,7 @@ const Modal = () => {
         </Modal>
     )
 }
-export default Modal
+export default ModalInput
 
 const style = StyleSheet.create( {
     
@@ -98,6 +102,6 @@ const style = StyleSheet.create( {
     },
     text: {
         color: "white",   
-
+        
     }
 })
