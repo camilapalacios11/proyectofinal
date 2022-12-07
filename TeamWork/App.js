@@ -6,17 +6,20 @@ import Tapiz2 from "./src/components/Tapiz2"
 //NAVEGADOR 
 import Navigation from './Navigation';
 import { Component } from 'react/cjs/react.production.min';
+import Add from './src/components/Add';
 
 //panatalla medida
 const alto = Dimensions.get ('window').height
 const ancho = Dimensions.get ('window').width
 
+
 export default function App() {
   
   return (
     //<Tapiz1/>
+    
     <View>
-      <Tapiz2/>
+      <Add></Add>
     </View>
   );
 }

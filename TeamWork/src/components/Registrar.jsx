@@ -39,7 +39,7 @@ const Registrar = () => {
              onChangeText= {(contrasena)=> setContrasena(contrasena)}>
             </TextInput>
             <TouchableOpacity onPress={() => {agregarUsuario()}}>
-                <Text style = {[style.letras, style.send]}>
+                <Text style = {[style.letras, style.send]}> 
                     ENTRAR
                 </Text>
             </TouchableOpacity>

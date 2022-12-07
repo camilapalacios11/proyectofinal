@@ -5,6 +5,7 @@ import { View, Modal,  Text, StyleSheet, TouchableOpacity, Dimensions, Button,  
 import Tarjeta from './Tarjeta';
 import close from '../images/X.png'
 
+
 const alto = Dimensions.get ('window').height
 const ancho = Dimensions.get ('window').width
 
@@ -74,6 +75,7 @@ const Todo = () => {
                         <Text> ASIGNACION: </Text>
                         <TextInput> </TextInput>
                         <Text> FECHA LIMITE: </Text>
+
                         <TextInput></TextInput>
                         <Text> CONCEPTO: </Text>
                         

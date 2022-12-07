@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 //pantallas
 import homeScreen from "./Screens/homeScreen";
 import scrumScreen from "./Screens/scrumScreen";
-import stackScreen from "./Screens/stacktScreen";
+import stackScreen from "./Screens/AddWorks";
 
 //import { TabBarIOSItem } from "react-native";
 
