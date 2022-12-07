@@ -69,7 +69,7 @@ const Add =() => {
                         <View>
                             <TextInput style= {styles.input}
                             placeholder="Nombre de la tarea"
-                            placeholderTextColor= "black"
+                            placeholderTextColor= "00000030"
                             onChangeText= {(text) => setNombre(text)}
                             />
                         </View>

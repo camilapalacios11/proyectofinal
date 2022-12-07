@@ -5,7 +5,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseConfig from "../../firebase"
 
 const Login = () => {   
-    }
+    
     return (
         <View style = {style.cuadro}>
             
