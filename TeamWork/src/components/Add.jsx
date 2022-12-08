@@ -1,11 +1,11 @@
 import react, {useState} from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Modal, Image, TextInput} from "react-native";
-import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
+//import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import close from '../images/X.png'
 
 //input values 
 
-const Add = () => {
+const Add =() => {
     const [view, setView] = useState(false);
     const [nombre, setNombre] = useState("")
     const [fecha, setFecha] = useState(new Date())
@@ -26,13 +26,12 @@ const Add = () => {
                     flex: 1, 
                     backgroundColor: "rgba(1, 1, 1, 0.5)",
                     justifyContent: "center",
-                    alignItems: "center"}}>
-                    
+                    alignItems: "center",
+                }}>
+
                     <View style= {{
-                        height: 350,
+                        height: 650,
                         width: 330,
-                        borderColor: "rgba(2, 38, 73, 0.7)",
-                        borderWidth: 3,
                         backgroundColor: "#B9C3CD",
                         borderBottomEndRadius: 20,
                         borderBottomStartRadius: 20, 
@@ -65,68 +64,52 @@ const Add = () => {
                             </TouchableOpacity>
 
                         </View> 
-                        <Text style={styles.titulo}> CREAR UN NUEVO PROYECTO</Text>
-                        <View style={styles.input_box}>
-                            <Text> NOMBRE: </Text>
+                        <Text> CREAR UN NUEVO PROYECTO</Text>
+                        <Text> ASIGNACION: </Text>
+                        <View>
                             <TextInput style= {styles.input}
-                            placeholder="Nombre de tu proyecto"
+                            placeholder="Nombre de la tarea"
                             placeholderTextColor= "00000030"
                             onChangeText= {(text) => setNombre(text)}
                             />
                         </View>
 
-                        <View style={styles.input_box}>
-                            <Text> FECHA LIMITE: </Text>
-                            <TextInput style= {styles.input}
-                            placeholder="Fecha de entrega"
-                            placeholderTextColor= "00000030"
-                            />
-                        </View>
-                        <View style={styles.input_box}>
-                            <Text> CONCEPTO: </Text>
-                            <TextInput style= {styles.input}
-                            placeholder="¿De que trata tu proyecto grupal?"
-                            placeholderTextColor= "00000030"
-                            />
-                        </View>
-                        <View>
-                            <TouchableOpacit
-                            style={styles.send}>
-                                CREAR
-                            </TouchableOpacit>
-                        </View>
+                        <Text> FECHA LIMITE: </Text>
+                       
+
+                        <Text> CONCEPTO: </Text>
                         
                     </View>
                 </View>
+
             </Modal>
+
         </View>
+
+            
         
     )
 }
 export default Add
 
 const styles = StyleSheet.create({
-    input_box: {
-        flexDirection: "row",
-        alignItems: "center"
-    },
+
     plus:{
-        fontSize: 70,
+        fontSize: 40,
         color: "white",
         position: "absolute", 
-        top: -10,
-        left: 20,
-
+        top: -6,
+        left: 9,
 
     },
     boton: {
-
-        width: 80,
-        height: 80,
-        backgroundColor: "#FF3A2E", 
+        width: 42,
+        height: 42,
+        borderBottomEndRadius: 21,
+        backgroundColor: "#022649", 
         position: "absolute",
-        left: 277,
-        top: 700,
+        bottom: 50, 
+        right: 15,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -135,18 +118,5 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.5,
         shadowRadius: 5,
         elevation: 5,
-        borderRadius: 50,
     },
-    input: { 
-        color: "#022649",
-        flexDirection: "row",
-        
-    },
-    titulo: {
-        textAlign: "center",
-        fontSize: 21
-    },
-    send: {
-        backgroundColor: "red",
-    }
   });
