@@ -9,19 +9,42 @@ import close from '../images/X.png'
 const alto = Dimensions.get ('window').height
 const ancho = Dimensions.get ('window').width
 
+const NuevoTodo = [
+    {
+        "img" : "../images/tarjeta3.png",
+        "nombre": "tarea",
+
+    },
+    {
+        "img" : "../images/tarjeta3.png",
+        "nombre": "tarea2",
+
+    },
+    {
+        "img" : "../images/tarjeta3.png",
+        "nombre": "tarea3",
+
+    }
+
+]
+
 const Todo = () => {
     
     const [view, setView] = useState(false);
     return (
         <View>
         <ScrollView style = {style.scroll}> 
-        <TouchableOpacity
-        onPress = {() => {setView(true)}}
-        >
-            <Tarjeta
-            imagen = { require ("../images/tarjeta3.png")} tarea = "Aqui va el todo"
+        {NuevoTodo.map ((t)=> {
+            return (
+                <TouchableOpacity
+                    onPress = {() => {setView(true)}}
+                >
+                    <Tarjeta
+                imagen = { require ("../images/tarjeta3.png")} tarea = "Aqui va el todo"
             />
-        </TouchableOpacity>
+            </TouchableOpacity>
+            )
+        })}
         
         </ScrollView>
 
@@ -79,9 +102,6 @@ const Todo = () => {
                         <TextInput></TextInput>
                         <Text> CONCEPTO: </Text>
                         
-                        
-
-
                     </View>
                     
                 </View>

@@ -7,6 +7,7 @@ import Tapiz2 from "./src/components/Tapiz2"
 import Navigation from './Navigation';
 import { Component } from 'react/cjs/react.production.min';
 import Add from './src/components/Add';
+import Todo from './src/components/Todo';
 
 //panatalla medida
 const alto = Dimensions.get ('window').height
@@ -18,7 +19,7 @@ export default function App() {
   return (
     //<Tapiz1/>
     
-      <Add/>
+      <Todo/>
   );
 }
 

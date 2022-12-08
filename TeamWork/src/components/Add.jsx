@@ -24,10 +24,12 @@ const Add = () => {
               fecha: fecha,
             });
             
-            console.log("Document written with ID: ", docRef.id);
-            const messageRef = doc(db, "grupos", docRef.id, "TODO", "lista1");
-            console.log(messageRef)
-            await setDoc(messageRef, {});
+
+            
+            await setDoc(doc(db, "grupos", docRef.id, "TODO", "lista1"), {});
+            await setDoc(doc(db, "grupos", docRef.id, "PROCESO", "lista1"), {});
+            await setDoc(doc(db, "grupos", docRef.id, "PRUEBA", "lista1"), {});
+            await setDoc(doc(db, "grupos", docRef.id, "HECHO", "lista1"), {});
             alert("listito")
           } catch (e) {
             console.error("Error adding document: ", e);
@@ -57,7 +59,7 @@ const Add = () => {
                     alignItems: "center"}}>
                     
                     <View style= {{
-                        height: 250,
+                        height: 200,
                         width: 330,
                         borderColor: "rgba(2, 38, 73, 0.7)",
                         borderWidth: 2,
@@ -139,7 +141,7 @@ const styles = StyleSheet.create({
         color: "white",
         position: "absolute", 
         top: -10,
-        left: 20,
+        left: 18,
     },
     boton: {
 
