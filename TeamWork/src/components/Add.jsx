@@ -2,13 +2,37 @@ import react, {useState} from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Modal, Image, TextInput} from "react-native";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import close from '../images/X.png'
-
-//input values 
+import { initializeApp } from "@firebase/app";
+import firebaseConfig from "../../firebase"
+import { getFirestore } from "firebase/firestore"
+import { collection, addDoc } from "firebase/firestore"
+import { async } from "@firebase/util";
 
 const Add = () => {
     const [view, setView] = useState(false);
     const [nombre, setNombre] = useState("")
-    const [fecha, setFecha] = useState(new Date())
+    const [fecha, setFecha] = useState("")
+    
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const crearGrupo = async() =>{
+
+        try {
+            const docRef = await addDoc(collection(db, "grupos"), {
+              nombre: nombre,
+              fecha: fecha,
+            });
+            console.log("Document written with ID: ", docRef.id);
+            db.add("grupos/"+ docRef.id + "/todo")
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
+
+    
+    }
+
+
     return(
 
         <View>
@@ -29,10 +53,10 @@ const Add = () => {
                     alignItems: "center"}}>
                     
                     <View style= {{
-                        height: 350,
+                        height: 250,
                         width: 330,
                         borderColor: "rgba(2, 38, 73, 0.7)",
-                        borderWidth: 3,
+                        borderWidth: 2,
                         backgroundColor: "#B9C3CD",
                         borderBottomEndRadius: 20,
                         borderBottomStartRadius: 20, 
@@ -80,23 +104,17 @@ const Add = () => {
                             <TextInput style= {styles.input}
                             placeholder="Fecha de entrega"
                             placeholderTextColor= "00000030"
+                            onChangeText= {(text) => setFecha(text)}
                             />
-                        </View>
-                        <View style={styles.input_box}>
-                            <Text> CONCEPTO: </Text>
-                            <TextInput style= {styles.input}
-                            placeholder="¿De que trata tu proyecto grupal?"
-                            placeholderTextColor= "00000030"
-                            />
-                        </View>
-                        <View>
-                            <TouchableOpacity
-                            style={styles.send}>
-                                <Text>CREAR</Text>
-                            </TouchableOpacity>
                         </View>
                         
                     </View>
+                        <View>
+                            <TouchableOpacity
+                            onPress={crearGrupo}>
+                                <Text style={styles.send}>CREAR</Text>
+                            </TouchableOpacity>
+                        </View>
                 </View>
             </Modal>
         </View>
@@ -108,21 +126,21 @@ export default Add
 const styles = StyleSheet.create({
     input_box: {
         flexDirection: "row",
-        alignItems: "center"
+        alignItems: "center",
+        paddingLeft: 10,
+        paddingTop: -5,
     },
     plus:{
-        fontSize: 70,
+        fontSize: 60,
         color: "white",
         position: "absolute", 
         top: -10,
         left: 20,
-
-
     },
     boton: {
 
-        width: 80,
-        height: 80,
+        width: 70,
+        height: 70,
         backgroundColor: "#FF3A2E", 
         position: "absolute",
         left: 277,
@@ -138,15 +156,25 @@ const styles = StyleSheet.create({
         borderRadius: 50,
     },
     input: { 
+        marginLeft: 3,
         color: "#022649",
         flexDirection: "row",
         
     },
     titulo: {
         textAlign: "center",
-        fontSize: 21
+        fontSize: 21,
+        color: "#FD5F51"
     },
     send: {
-        backgroundColor: "red",
+        backgroundColor: "#FD5F51",
+        textAlign: "center",  
+        color: "white", 
+        height: 30,
+        width: 80,
+        borderRadius: 10,
+        marginTop: 10,
+        paddingTop: 5,
+        fontSize: 20,
     }
   });
