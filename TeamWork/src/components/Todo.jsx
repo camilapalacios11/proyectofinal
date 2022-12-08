@@ -24,8 +24,12 @@ const NuevoTodo = [
         "img" : "../images/tarjeta3.png",
         "nombre": "tarea3",
 
-    }
+    },
+    {
+        "img" : "../images/tarjeta3.png",
+        "nombre": "tarea4",
 
+    }
 ]
 
 const Todo = () => {
@@ -40,7 +44,7 @@ const Todo = () => {
                     onPress = {() => {setView(true)}}
                 >
                     <Tarjeta
-                imagen = { require ("../images/tarjeta3.png")} tarea = "Aqui va el todo"
+                imagen={require ("../images/tarjeta3.png")} tarea = {t.nombre}
             />
             </TouchableOpacity>
             )

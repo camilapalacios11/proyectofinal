@@ -17,9 +17,8 @@ const ancho = Dimensions.get ('window').width
 export default function App() {
   
   return (
-    //<Tapiz1/>
+    <Tapiz2/>
     
-      <Todo/>
   );
 }
 
