@@ -5,7 +5,7 @@ import close from '../images/X.png'
 import { initializeApp } from "@firebase/app";
 import firebaseConfig from "../../firebase"
 import { getFirestore } from "firebase/firestore"
-import { collection, addDoc } from "firebase/firestore"
+import { collection, addDoc, doc, setDoc } from "firebase/firestore"
 import { async } from "@firebase/util";
 
 const Add = () => {
@@ -23,8 +23,12 @@ const Add = () => {
               nombre: nombre,
               fecha: fecha,
             });
+            
             console.log("Document written with ID: ", docRef.id);
-            db.add("grupos/"+ docRef.id + "/todo")
+            const messageRef = doc(db, "grupos", docRef.id, "TODO", "lista1");
+            console.log(messageRef)
+            await setDoc(messageRef, {});
+            alert("listito")
           } catch (e) {
             console.error("Error adding document: ", e);
           }
