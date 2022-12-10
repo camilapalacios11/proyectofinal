@@ -1,8 +1,8 @@
 import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
 import React, {useState} from 'react';
-import image from '../images/tapiz1.png'
-import Login from './Login'
-import Registrar from "./Registrar"
+import image from '../src/images/tapiz1.png'
+import Login from '../src/components/Login'
+import Registrar from "../src/components/Registrar"
 
 const Tapiz1 = () => {
     const [botonActivo, setBoton] = useState(1) 

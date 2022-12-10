@@ -3,15 +3,17 @@ import React, {useState} from 'react';
 import { initializeApp } from "@firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseConfig from "../../firebase"
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {   
     const [Correo, setCorreo] = useState("")
     const [Contrasena, setContrasena] = useState("")
+    const navigation = useNavigation();
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const lognInUsuario = () => {
-        signInWithEmailAndPassword(auth, Correo, Contrasena).then(()=> {alert("el usuario existe")})
+        signInWithEmailAndPassword(auth, Correo, Contrasena).then(()=> {navigation.navigate("home")})
         .catch((error) => {
             alert(error.message)
         })

@@ -1,12 +1,16 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from '@react-navigation/stack';
 import { AntDesign } from '@expo/vector-icons';
+
+const Stack = createStackNavigator();
 
 //pantallas
 import homeScreen from "./Screens/homeScreen";
 import scrumScreen from "./Screens/scrumScreen";
 import stackScreen from "./Screens/AddWorks";
+import Tapiz1 from './Screens/Tapiz1';
 
 //import { TabBarIOSItem } from "react-native";
 
@@ -16,6 +20,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 const Tab = createBottomTabNavigator();
+
 
 function MyTabs() {
     return(
@@ -58,7 +63,10 @@ function MyTabs() {
 export default function Navigation() {
     return (
         <NavigationContainer>
-            <MyTabs/>
+            <Stack.Navigator initialRouteName='Tapiz1' >
+                <Stack.Screen name='Tapiz1' component={Tapiz1} options={{headerShown: false}}/>
+                <Stack.Screen name='home' component={homeScreen} options={{headerShown: false}}/>
+            </Stack.Navigator>
         </NavigationContainer>
     )
     

@@ -121,9 +121,6 @@ const style = StyleSheet.create( {
     
     scroll: {
         backgroundColor: "white",
-        height: 1000,
-        width: 1000,
-        position: "absolute",
         marginLeft: 100,
         marginTop: 3,
     },
