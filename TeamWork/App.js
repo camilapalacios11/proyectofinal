@@ -19,7 +19,7 @@ export default function App() {
   
   return (
   
-    <Tapiz3/>  
+    <Tapiz2/>  
   );
 }
 
