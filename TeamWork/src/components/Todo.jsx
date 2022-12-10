@@ -5,7 +5,9 @@ import { View, Modal,  Text, StyleSheet, TouchableOpacity, Dimensions, Button,  
 import Tarjeta from './Tarjeta';
 import close from '../images/X.png'
 
+
 import Add from './Add';
+import AddEtiqueta from './AddEtiqueta';
 
 
 const alto = Dimensions.get ('window').height
@@ -110,10 +112,16 @@ const Todo = () => {
                                 
                             }}>
                                 <Text style={style.titulo}> ASIGNACION: </Text>
-                                    <TextInput style={style.respuesta}> </TextInput>
+                                    <TextInput style={style.respuesta}
+                                    
+                                    > </TextInput>
                                 <Text style={style.titulo}> FECHA LIMITE: </Text>
-                                    <TextInput style={style.respuesta}></TextInput>
-                                <Text style={style.titulo}> CONCEPTO: </Text>
+                                    <TextInput style={style.respuesta}
+                                    
+                                    ></TextInput>
+                                <Text style={style.titulo}
+                                
+                                > CONCEPTO: </Text>
                                     <TextInput style={style.respuesta}></TextInput>
                             </View>
                         
@@ -122,9 +130,9 @@ const Todo = () => {
                 </View>
 
             </Modal>
-
-             <Add/>
+            <AddEtiqueta/>
         </View>
+            
     )
 }
 export default Todo

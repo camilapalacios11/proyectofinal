@@ -10,6 +10,8 @@ import Hecho from './Hecho';
 //import Login from './Login'
 //import Registrar from "./Registrar"
 
+import AddEtiqueta from './AddEtiqueta';
+
 const alto = Dimensions.get ('window').height
 const ancho = Dimensions.get ('window').width
 
@@ -96,6 +98,8 @@ const Tapiz2 = () => {
                 <Hecho/>
                 
             }   
+
+            <AddEtiqueta/>
         </View>
     )
 }
