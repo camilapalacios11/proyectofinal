@@ -1,14 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
+import { getAuth } from "firebase/auth";
 import { AntDesign } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
 //pantallas
-import homeScreen from "./Screens/homeScreen";
-import scrumScreen from "./Screens/scrumScreen";
+import HomeScreen from "./Screens/HomeScreen";
+import ScrumScreen from "./Screens/ScrumScreen";
 import stackScreen from "./Screens/AddWorks";
 import Tapiz1 from './Screens/Tapiz1';
 
@@ -33,7 +34,7 @@ function MyTabs() {
 
             <Tab.Screen 
             name = "home" 
-            component= {homeScreen}  
+            component= {HomeScreen}  
             options = {{
                 tabBarLabel: "Hogar",
                 tabBarIcon: ({color, size}) => (
@@ -46,7 +47,7 @@ function MyTabs() {
 
             <Tab.Screen
             name = "scrum" 
-            component= {scrumScreen} 
+            component= {ScrumScreen} 
             options = {{
                 tabBarLabel: "scrum",
                 tabBarIcon: ({color, size}) => (
@@ -61,12 +62,21 @@ function MyTabs() {
 }
 
 export default function Navigation() {
+    const auth = getAuth();
+    const [user] = useState(auth.currentUser);
+
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Tapiz1' >
-                <Stack.Screen name='Tapiz1' component={Tapiz1} options={{headerShown: false}}/>
-                <Stack.Screen name='home' component={homeScreen} options={{headerShown: false}}/>
-            </Stack.Navigator>
+            {
+                user ? (
+                    <MyTabs/>
+                ) : (
+                    <Stack.Navigator initialRouteName="Tapiz1">
+                        <Stack.Screen name = "Tapiz1" component = {Tapiz1} options = {{headerShown: false}}/>
+                        <Stack.Screen name = "home" component = {MyTabs} options = {{headerShown: false}}/>
+                    </Stack.Navigator>
+                )
+            }
         </NavigationContainer>
     )
     

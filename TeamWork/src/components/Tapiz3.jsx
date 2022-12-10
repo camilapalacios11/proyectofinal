@@ -1,5 +1,5 @@
 import { View, Text, Dimensions, TextInput, StyleSheet, TouchableOpacity, ImageBackground, } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { initializeApp } from "@firebase/app";
 import FloatingButton from './FloatingButton';
 //import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -7,7 +7,8 @@ import FloatingButton from './FloatingButton';
 import image from '../images/proyectos.png'
 import firebaseConfig from "../../firebase"
 import { getFirestore } from "firebase/firestore"
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 //medidas 
@@ -19,23 +20,40 @@ const db = getFirestore(app);
 
 const Tapiz3 = () => {
   const [listApp, setListApp] = useState([])
-  const nuevaCarpeta = async () => {
-    const querySnapshot = await getDocs(collection(db, "grupos"));
-    querySnapshot.forEach((doc) => {
-      setListApp([doc.data()])
+  useLayoutEffect(() => {
+    const  datos = onSnapshot(collection(db, "grupos"), (querySnapshot) => {
+      setListApp([])
+      querySnapshot.forEach((doc) => {
+        setListApp((listApp) => [...listApp, doc.data()])
+      });
     });
-    console.log(listApp)
-  }
-
-  nuevaCarpeta()
+    return datos
+  }, [])
   return (
     <View style={styles.container}>
 
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+        <ScrollView style={styles.scroll}>
+        <View style={styles.trabajos}>
         {
-          listApp.map(() => {})
+          listApp.map((item, index) => {
+            return (
+              <TouchableOpacity>
+              <View style={styles.divTeam} key={index}>
+                <View style={styles.boxTeam}>
+                  
+                </View>
+                <Text>{item.nombre}</Text>
+              </View>
+              </TouchableOpacity>
+            )
+          })
+
         }
+        </View>
+        </ScrollView>
         <FloatingButton />
+
       </ImageBackground>
     </View>
 
@@ -47,6 +65,18 @@ export default Tapiz3;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "center",
+  },
+  scroll: {
+
+    marginTop: 150,
+  },
+
+  trabajos: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+
+    justifyContent: "center",
   },
   image: {
     flex: 1,
@@ -61,9 +91,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 5,
   },
-  divTeam: {
-    marginTop: -350,
-    marginLeft: 10,
-  }
+  
 
 });

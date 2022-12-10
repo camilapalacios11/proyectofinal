@@ -1,16 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import Tapiz3 from "../src/components/Tapiz3";
 
-const homeScreen = () => {
-    return(
-        <View>
-            <Text
-            style = {{
-                fontSize: 30,
-                textAlign: "center",
-                marginTop: "20%"
-            }}>HOME SCREEN</Text>
-        </View>
-    )
+const HomeScreen = () => {
+    return <Tapiz3/>
 }
-export default homeScreen;
+export default HomeScreen;

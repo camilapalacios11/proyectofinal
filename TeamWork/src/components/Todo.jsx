@@ -38,6 +38,7 @@ const Todo = () => {
 
     
     const [view, setView] = useState(false);
+    
     return (
         <View>
         <ScrollView style = {style.scroll}> 

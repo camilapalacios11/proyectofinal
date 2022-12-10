@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const scrumScreen = () => {
+const ScrumScreen = () => {
     return(
         <View>
             <Text
@@ -13,4 +13,4 @@ const scrumScreen = () => {
         </View>
     )
 }
-export default scrumScreen;
+export default ScrumScreen;

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const stackScreen = () => {
+const StackScreen = () => {
     return(
         <View>
             <Text
@@ -14,4 +14,4 @@ const stackScreen = () => {
     )
     
 }
-export default stackScreen;
+export default StackScreen;
