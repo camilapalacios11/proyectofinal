@@ -25,19 +25,33 @@ const Tapiz2 = () => {
             style = {{
                 backgroundColor: "rgba(2, 38, 73, 0.22)",
                 justifyContent: "center",
-                height: alto /5,
+                height: 165,
                 width: ancho,
                 shadowColor: "black",
-                shadowOpacity: 0.50,
-                elevation: 2,
                 paddingLeft: 30,
                 fontSize: 30,
             }}>
-                <Text style ={{ fontSize: 30, marginTop: 30 }}>
+                <Text style ={{
+                    marginLeft: -5,
+                    fontSize: 36, 
+                    marginTop: 40,
+                    color: "#022649",
+                    fontStyle: "italic",
+                    fontWeight: 'bold', }}>
+
                 REPERTORIO
                 </Text>
 
-                <Text style ={{ fontSize: 15, marginTop: -3}}>
+                <Text style ={{ 
+                    marginLeft: -5,
+                    marginRight: 50,
+                    fontSize: 16,
+                    marginTop: -5,
+                    color: "#47617B",
+                    fontStyle: "italic",
+                    fontWeight: 'bold',
+
+                     }}>
                 Seleccione una tarjeta para 
                 visualizar o editar su contenido
                 </Text>
@@ -111,7 +125,12 @@ const style = StyleSheet.create( {
         color: "black",
         textAlign: "center",
         paddingTop: 50,
-        transform: [{ rotate: '-90deg'}]
+        transform: [{ rotate: '-90deg'}],
+        color: "#022649",
+        fontStyle: "italic",
+        fontWeight: 'bold',
+        fontSize: 15,
+        
     },
     scroll: {
         backgroundColor: "white",

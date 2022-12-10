@@ -5,34 +5,37 @@ import { View, Modal,  Text, StyleSheet, TouchableOpacity, Dimensions, Button,  
 import Tarjeta from './Tarjeta';
 import close from '../images/X.png'
 
+import Add from './Add';
+
 
 const alto = Dimensions.get ('window').height
 const ancho = Dimensions.get ('window').width
 
 const NuevoTodo = [
     {
-        "img" : "../images/tarjeta3.png",
+        "img" : require("../images/tarjeta4.png"),
         "nombre": "tarea",
 
     },
     {
-        "img" : "../images/tarjeta3.png",
+        "img" : require("../images/tarjeta2.png"),
         "nombre": "tarea2",
 
     },
     {
-        "img" : "../images/tarjeta3.png",
+        "img" : require("../images/tarjeta3.png"),
         "nombre": "tarea3",
 
     },
     {
-        "img" : "../images/tarjeta3.png",
+        "img" : require("../images/tarjeta1.png"),
         "nombre": "tarea4",
 
     }
 ]
 
 const Todo = () => {
+
     
     const [view, setView] = useState(false);
     return (
@@ -44,7 +47,7 @@ const Todo = () => {
                     onPress = {() => {setView(true)}}
                 >
                     <Tarjeta
-                imagen={require ("../images/tarjeta3.png")} tarea = {t.nombre}
+                imagen={t.img} tarea = {t.nombre} 
             />
             </TouchableOpacity>
             )
@@ -65,7 +68,7 @@ const Todo = () => {
                 }}>
 
                     <View style= {{
-                        height: 650,
+                        height: 450,
                         width: 330,
                         backgroundColor: "#B9C3CD",
                         borderBottomEndRadius: 20,
@@ -99,12 +102,19 @@ const Todo = () => {
                             </TouchableOpacity>
 
                         </View> 
-                        <Text> ASIGNACION: </Text>
-                        <TextInput> </TextInput>
-                        <Text> FECHA LIMITE: </Text>
 
-                        <TextInput></TextInput>
-                        <Text> CONCEPTO: </Text>
+                            <View
+                            style={{
+                                marginLeft: 15,
+                                
+                            }}>
+                                <Text style={style.titulo}> ASIGNACION: </Text>
+                                    <TextInput style={style.respuesta}> </TextInput>
+                                <Text style={style.titulo}> FECHA LIMITE: </Text>
+                                    <TextInput style={style.respuesta}></TextInput>
+                                <Text style={style.titulo}> CONCEPTO: </Text>
+                                    <TextInput style={style.respuesta}></TextInput>
+                            </View>
                         
                     </View>
                     
@@ -112,6 +122,7 @@ const Todo = () => {
 
             </Modal>
 
+             <Add/>
         </View>
     )
 }
@@ -125,10 +136,22 @@ const style = StyleSheet.create( {
         width: 1000,
         position: "absolute",
         marginLeft: 100,
-        marginTop: 3,
+        marginTop: -10,
     },
     text: {
         color: "white",   
 
-    }
+    },
+    titulo: {
+        color: "#022649",
+        fontSize: 17,
+        fontStyle: "italic",
+        fontWeight: 'bold',
+    },
+    respuesta: {
+        color: "#47617B",
+        fontSize: 17,
+        fontStyle: "italic",
+        fontWeight: 'bold',
+    },
 })
