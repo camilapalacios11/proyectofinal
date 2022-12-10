@@ -16,7 +16,7 @@ const alto = Dimensions.get ('window').height
 const ancho = Dimensions.get ('window').width
 
 
-const Tapiz2 = () => {
+const Tapiz2 = ({ id }) => {
     const [botonActivo, setBoton] = useState(1)
 
     return (
@@ -39,7 +39,7 @@ const Tapiz2 = () => {
                     marginTop: 40,
                     color: "#022649",
                     fontStyle: "italic",
-                    fontWeight: 'bold', }}>
+                    fontWeight: 'bold'}}>
 
                 REPERTORIO
                 </Text>
@@ -86,10 +86,9 @@ const Tapiz2 = () => {
                         <Text style = {[style.tabs, style.letras, botonActivo == 4 && style.tabs_noacti]}>HECHO</Text>
                     </TouchableOpacity>    
                </View>
-
             {   
                 (botonActivo == 1)? 
-                <Todo/>:
+                <Todo id={id}/>:
                     (botonActivo == 2)? 
                     <Proceso/>:
                     (botonActivo == 3)?
@@ -98,8 +97,7 @@ const Tapiz2 = () => {
                 <Hecho/>
                 
             }   
-
-            <AddEtiqueta/>
+            <AddEtiqueta id={id}/>
         </View>
     )
 }
@@ -107,7 +105,8 @@ export default Tapiz2
 
 const style = StyleSheet.create( {
     viewcont: {
-        flex: 1
+        flex: 1,
+        backgroundColor: "white"
     },
     contenedor: {
         width: 50,

@@ -26,10 +26,10 @@ const Add = () => {
             
 
             
-            await setDoc(doc(db, "grupos", docRef.id, "TODO", "lista1"), {});
-            await setDoc(doc(db, "grupos", docRef.id, "PROCESO", "lista1"), {});
-            await setDoc(doc(db, "grupos", docRef.id, "PRUEBA", "lista1"), {});
-            await setDoc(doc(db, "grupos", docRef.id, "HECHO", "lista1"), {});
+            await setDoc(doc(db, "grupos", docRef.id, "TODO"), {});
+            await setDoc(doc(db, "grupos", docRef.id, "PROCESO"), {});
+            await setDoc(doc(db, "grupos", docRef.id, "PRUEBA"), {});
+            await setDoc(doc(db, "grupos", docRef.id, "HECHO"), {});
             alert("listito")
           } catch (e) {
             console.error("Error adding document: ", e);

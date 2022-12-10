@@ -30,7 +30,7 @@ const FloatingButton = () => {
             await setDoc(doc(db, "grupos", docRef.id, "PROCESO", "lista1"), {});
             await setDoc(doc(db, "grupos", docRef.id, "PRUEBA", "lista1"), {});
             await setDoc(doc(db, "grupos", docRef.id, "HECHO", "lista1"), {});
-            alert("listito")
+            alert("Grupo creado con exito")
           } catch (e) {
             console.error("Error adding document: ", e);
           }

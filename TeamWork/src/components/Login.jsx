@@ -13,10 +13,17 @@ const Login = () => {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const lognInUsuario = () => {
-        signInWithEmailAndPassword(auth, Correo, Contrasena).then(()=> {navigation.navigate("home")})
-        .catch((error) => {
-            alert(error.message)
-        })
+        if(Correo == "" || Contrasena == "") 
+        {
+            alert("Por favor, rellene todos los campos")
+        }
+        else
+        {
+            signInWithEmailAndPassword(auth, Correo, Contrasena).then(()=> {navigation.navigate("home")})
+            .catch((error) => {
+                alert(error.message)
+            })
+        }
     }
     return (
         <View style = {style.cuadro}>

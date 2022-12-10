@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 //pantallas
 import HomeScreen from "./Screens/HomeScreen";
 import ScrumScreen from "./Screens/ScrumScreen";
-import stackScreen from "./Screens/AddWorks";
+import StackScreen from "./Screens/AddWorks";
 import Tapiz1 from './Screens/Tapiz1';
 
 //import { TabBarIOSItem } from "react-native";
@@ -28,7 +28,7 @@ function MyTabs() {
         <Tab.Navigator
         intialRouteName= "home"
         screenOptions = {{
-            tabBarActiveTintColor:"blue"
+            tabBarActiveTintColor:"#FF3A2E"
         }} 
         >
 
@@ -46,12 +46,12 @@ function MyTabs() {
             />
 
             <Tab.Screen
-            name = "scrum" 
+            name = "salir" 
             component= {ScrumScreen} 
             options = {{
-                tabBarLabel: "scrum",
+                tabBarLabel: "salir",
                 tabBarIcon: ({color, size}) => (
-                    <MaterialCommunityIcons name="layers-outline" color ={color} size ={30} />
+                    <MaterialCommunityIcons name="logout" color ={color} size ={30} />
                     ),
                 //tabBarBadge:
                 headerShown: false,
@@ -74,6 +74,7 @@ export default function Navigation() {
                     <Stack.Navigator initialRouteName="Tapiz1">
                         <Stack.Screen name = "Tapiz1" component = {Tapiz1} options = {{headerShown: false}}/>
                         <Stack.Screen name = "home" component = {MyTabs} options = {{headerShown: false}}/>
+                        <Stack.Screen name = "Tareas" component = {StackScreen} options={{title: ""}}/>
                     </Stack.Navigator>
                 )
             }
@@ -81,17 +82,3 @@ export default function Navigation() {
     )
     
 }
-/*
-const homeScreen = () => {
-    return(
-        <View>
-            <Text
-            style = {{
-                fontSize: 30,
-                textAlign: "center",
-                marginTop: "20%"
-            }}>HOME SCREEN</Text>
-        </View>
-    )
-}
-export default homeScreen;*/

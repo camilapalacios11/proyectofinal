@@ -8,7 +8,7 @@ import { getFirestore } from "firebase/firestore"
 import { collection, addDoc, doc, setDoc } from "firebase/firestore"
 import { async } from "@firebase/util";
 
-const AddEtiqueta = () => {
+const AddEtiqueta = ({ id }) => {
     const [view, setView] = useState(false);
     const [nombre, setNombre] = useState("")
     const [fecha, setFecha] = useState("")
@@ -17,26 +17,26 @@ const AddEtiqueta = () => {
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    const crearGrupo = async() =>{
-
-        try {
-            const docRef = await addDoc(collection(db, "grupos"), {
-              nombre: nombre,
-              fecha: fecha,
-            });
+    const crearTarea = async() =>{
+        if (nombre == "" || fecha == "" || tarea == "")
+        {
+            alert("No dejes campos vacios")
+        }
+        else
+        {
+            try {
+                await setDoc(doc(db, "grupos", id, "TODO", nombre), {
+                    "nombre": nombre,
+                    "fecha": fecha,
+                    "tarea": tarea
+                });
+                alert("Tarea creada con exito")
+                setView(false)
             
-
-            
-            await setDoc(doc(db, "grupos", docRef.id, "TODO", "lista1"), {});
-            await setDoc(doc(db, "grupos", docRef.id, "PROCESO", "lista1"), {});
-            await setDoc(doc(db, "grupos", docRef.id, "PRUEBA", "lista1"), {});
-            await setDoc(doc(db, "grupos", docRef.id, "HECHO", "lista1"), {});
-            alert("listito")
-          } catch (e) {
-            console.error("Error adding document: ", e);
-          }
-
-    
+            } catch (e) {
+                alert("Error al crear la tarea");
+            }
+        }
     }
 
 
@@ -129,7 +129,7 @@ const AddEtiqueta = () => {
                     </View>
                         <View>
                             <TouchableOpacity
-                            onPress={crearGrupo}>
+                            onPress={crearTarea}>
                                 <Text style={styles.send}>CREAR</Text>
                             </TouchableOpacity>
                         </View>

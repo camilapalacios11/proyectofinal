@@ -9,7 +9,7 @@ import firebaseConfig from "../../firebase"
 import { getFirestore } from "firebase/firestore"
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { ScrollView } from 'react-native-gesture-handler';
-
+import { useNavigation } from "@react-navigation/native";
 
 //medidas 
 const alto = Dimensions.get('window').height
@@ -19,12 +19,14 @@ const db = getFirestore(app);
 
 
 const Tapiz3 = () => {
+
+  const navigation = useNavigation();
   const [listApp, setListApp] = useState([])
   useLayoutEffect(() => {
     const  datos = onSnapshot(collection(db, "grupos"), (querySnapshot) => {
       setListApp([])
       querySnapshot.forEach((doc) => {
-        setListApp((listApp) => [...listApp, doc.data()])
+        setListApp((listApp) => [...listApp, {id: doc.id, ...doc.data()}])
       });
     });
     return datos
@@ -36,10 +38,10 @@ const Tapiz3 = () => {
         <ScrollView style={styles.scroll}>
         <View style={styles.trabajos}>
         {
-          listApp.map((item, index) => {
+          listApp.map((item) => {
             return (
-              <TouchableOpacity>
-              <View style={styles.divTeam} key={index}>
+              <TouchableOpacity onPress={() => navigation.navigate("Tareas", {id: item.id})}>
+              <View style={styles.divTeam}>
                 <View style={styles.boxTeam}>
                   
                 </View>
@@ -65,11 +67,15 @@ export default Tapiz3;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: "center"
   },
   scroll: {
 
     marginTop: 150,
+    borderRadius: 10,
+    
+    width: ancho,
+    height: alto,
   },
 
   trabajos: {

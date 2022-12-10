@@ -1,64 +1,57 @@
-import { useState } from 'react';
-import { View, Modal,  Text, StyleSheet, TouchableOpacity, Dimensions, Button,  ScrollView, Image,
-     TextInput} from 'react-native';
-
+import react, { useState, useLayoutEffect } from 'react';
+import { View, StyleSheet, TouchableOpacity, ScrollView, Modal, Image, Text} from 'react-native';
+import firebaseConfig from "../../firebase"
+import { getFirestore } from "firebase/firestore"
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import Tarjeta from './Tarjeta';
+import { initializeApp } from "@firebase/app";
 import close from '../images/X.png'
 
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+let img = 0
+const NuevoTodo = [require("../images/tarjeta4.png"), require("../images/tarjeta2.png"), require("../images/tarjeta1.png"), require("../images/tarjeta3.png")]
 
-import Add from './Add';
-import AddEtiqueta from './AddEtiqueta';
-
-
-const alto = Dimensions.get ('window').height
-const ancho = Dimensions.get ('window').width
-
-const NuevoTodo = [
-    {
-        "img" : require("../images/tarjeta4.png"),
-        "nombre": "tarea",
-
-    },
-    {
-        "img" : require("../images/tarjeta2.png"),
-        "nombre": "tarea2",
-
-    },
-    {
-        "img" : require("../images/tarjeta3.png"),
-        "nombre": "tarea3",
-
-    },
-    {
-        "img" : require("../images/tarjeta1.png"),
-        "nombre": "tarea4",
-
-    }
-]
-
-const Todo = () => {
-
+const Todo = ({ id }) => {
+    const [listApp, setListApp] = useState([])
+    const [view, setView] = useState(false)
+    const [tarea, setTarea] = useState("")
     
-    const [view, setView] = useState(false);
+    useLayoutEffect(() => {
+        //Extraer datos de una subcoleccion
+        const direc = "grupos" + "/" + id + "/" + "TODO"
+        const  datos = onSnapshot(collection(db, direc), (querySnapshot) => {
+            setListApp([])
+            querySnapshot.forEach((doc) => {
+                setListApp((listApp) => [...listApp, doc.data()])
+            });
+        });
+        return datos
+    }, [])
+
+        
     
     return (
         <View>
         <ScrollView style = {style.scroll}> 
-        {NuevoTodo.map ((t)=> {
+        {listApp.map ((t)=> {
+            (img>= 3) ? img = 0 : img = img+1
             return (
                 <TouchableOpacity
-                    onPress = {() => {setView(true)}}
+                    onPress = {() => {
+                        setTarea(t.tarea)
+                        setView(true)
+                    }}
                 >
                     <Tarjeta
-                imagen={t.img} tarea = {t.nombre} 
+                imagen={NuevoTodo[img]} tarea = {t.tarea} 
             />
             </TouchableOpacity>
             )
         })}
         
         </ScrollView>
-
-            <Modal animationType='fade' 
+        <Modal animationType='fade' 
             onDismiss={ () => console.log("close") }
             onShow={ () => console.log("show")} 
             visible = {view}>
@@ -67,12 +60,13 @@ const Todo = () => {
                     flex: 1, 
                     backgroundColor: "rgba(1, 1, 1, 0.5)",
                     justifyContent: "center",
-                    alignItems: "center",
-                }}>
-
+                    alignItems: "center"}}>
+                    
                     <View style= {{
-                        height: 450,
+                        height: 200,
                         width: 330,
+                        borderColor: "rgba(2, 38, 73, 0.7)",
+                        borderWidth: 2,
                         backgroundColor: "#B9C3CD",
                         borderBottomEndRadius: 20,
                         borderBottomStartRadius: 20, 
@@ -105,32 +99,10 @@ const Todo = () => {
                             </TouchableOpacity>
 
                         </View> 
-
-                            <View
-                            style={{
-                                marginLeft: 15,
-                                
-                            }}>
-                                <Text style={style.titulo}> ASIGNACION: </Text>
-                                    <TextInput style={style.respuesta}
-                                    
-                                    > </TextInput>
-                                <Text style={style.titulo}> FECHA LIMITE: </Text>
-                                    <TextInput style={style.respuesta}
-                                    
-                                    ></TextInput>
-                                <Text style={style.titulo}
-                                
-                                > CONCEPTO: </Text>
-                                    <TextInput style={style.respuesta}></TextInput>
-                            </View>
-                        
-                    </View>
-                    
-                </View>
-
+                        <Text style={styles.titulo}> {tarea}</Text>
+                                        </View>
+                                        </View>
             </Modal>
-            <AddEtiqueta/>
         </View>
             
     )
@@ -161,3 +133,59 @@ const style = StyleSheet.create( {
         fontWeight: 'bold',
     },
 })
+
+const styles = StyleSheet.create({
+    input_box: {
+        flexDirection: "row",
+        alignItems: "center",
+        paddingLeft: 10,
+        paddingTop: -5,
+    },
+    plus:{
+        fontSize: 60,
+        color: "white",
+        position: "absolute", 
+        top: -10,
+        left: 18,
+    },
+    boton: {
+
+        width: 70,
+        height: 70,
+        backgroundColor: "#FF3A2E", 
+        position: "absolute",
+        left: 277,
+        top: 700,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        elevation: 5,
+        borderRadius: 50,
+    },
+    input: { 
+        marginLeft: 3,
+        color: "#022649",
+        flexDirection: "row",
+        
+    },
+    titulo: {
+        textAlign: "center",
+        fontSize: 21,
+        color: "#FD5F51"
+    },
+    send: {
+        backgroundColor: "#FD5F51",
+        textAlign: "center",  
+        color: "white", 
+        height: 30,
+        width: 80,
+        borderRadius: 10,
+        marginTop: 10,
+        paddingTop: 5,
+        fontSize: 20,
+    }
+  });

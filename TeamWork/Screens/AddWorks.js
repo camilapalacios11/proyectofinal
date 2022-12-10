@@ -1,17 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import Tapiz2 from "../src/components/Tapiz2";
 
-const StackScreen = () => {
-    return(
-        <View>
-            <Text
-            style = {{
-                fontSize: 30,
-                textAlign: "center",
-                marginTop: "20%"
-            }}>STACK SCREEN</Text>
-        </View>
-    )
+const StackScreen = ({ route }) => {
+    return <Tapiz2 id={route.params.id}/>
     
 }
 export default StackScreen;

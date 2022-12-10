@@ -1,16 +1,6 @@
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import Tapiz4 from "../src/components/Tapiz4";
 
 const ScrumScreen = () => {
-    return(
-        <View>
-            <Text
-            style = {{
-                fontSize: 30,
-                textAlign: "center",
-                marginTop: "20%"
-            }}>SCRUM SCREEN</Text>
-        </View>
-    )
+    return <Tapiz4/>;
 }
 export default ScrumScreen;
